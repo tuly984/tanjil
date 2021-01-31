@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		.result li{
+			width: 100%;
+			height: 50px;
+			background:pink;
+			border-bottom: 2px  solid #ddd;
+			line-height: 45px;
+			color: #fff;
+			text-align: center;
+			
+		}
+	</style>
+</head>
+<body>
+
+	<ul class="result">
+	</ul>
+
+	<script>
+		
+		let link='https://jsonplaceholder.typicode.com/users';
+
+		async function loadData(){
+			let res = await fetch(link)
+			let data = await res.json()
+			let output=''
+			for(let user of data){
+				output +=`
+				<li>Name: ${user.name},email: ${user.email}</li>
+
+
+				`;
+			}
+
+			document.querySelector('.result').innerHTML =output
+		}
+
+		loadData()
+	</script>
+
+</body>
+</html>
